@@ -1,0 +1,78 @@
+<?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+if (isset($_REQUEST['email']))  { 
+
+$to = 'alex@bizngine.com, jack@bizngine.com';
+
+$subject = 'New Lead';
+
+$request_email = $_REQUEST['email'];
+
+$headers = "From: " . strip_tags($request_email) . "\r\n"."X-Mailer: php";
+$headers .= "Reply-To: ". strip_tags($request_email) . "\r\n";
+$headers .= "MIME-Version: 1.0\r\n";
+$headers .= "Content-Type: text/html; charset=ISO-8859-1". "\r\n";
+
+/*$headers  = 'MIME-Version: 1.0' . "\r\n";
+$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n"
+$headers .= 'From: '.$request_email."\r\n".
+
+    'Reply-To: '.$request_email."\r\n" .
+
+    'X-Mailer: PHP/' . phpversion();*/
+
+$message = '<html><style>
+.heading{ color: #3498db;font-size:24px;}
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 40%;
+	text-align:center;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+    padding: 2px 16px;
+}
+</style><body>';
+$message .= '<p class="heading">Hi there,</p>';
+$message .= '<p>Please find following details</p>';
+$message .= '<div class="card"><table width="50%" rules="all" style="border-color: #666;" cellpadding="10">';
+
+$request_text='';
+foreach ($_REQUEST as $key => $value) {
+  $request_text.= "<tr><td><strong>".$key.":</strong> </td><td>" . strip_tags($value) . "</td></tr>";
+}
+$message .= $request_text;
+
+
+$message .= "</table></div>";
+$message .= "<p>Thank you for contacting us!</p>";
+$message .= "</body></html>";
+
+//echo $headers;
+
+//echo $message;
+
+if (mail($to,$subject,$message,$headers)) {
+	 //echo 'Your mail has been sent successfully.';
+	 header('Location: http://offers.ablending.com/thankyou.php');
+} else {
+    echo 'Unable to send email. Please try again.';
+	$errorMessage = error_get_last();
+	print_r($errorMessage);
+
+}
+
+
+
+//echo "Thank you for contacting us!";
+
+}

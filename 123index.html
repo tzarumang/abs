@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+<title>Qualify For Today's Low Mortgage Rates. Takes 30 Seconds. | Ablending.com</title>
+<meta name="description" content="Qualify For Today's Low Mortgage Rates. Takes 30 Seconds.">
+<meta name="keywords" content="qualify compare mortgage quotes lenders">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css">
+<link rel="stylesheet" href="//code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/modal.css" />
+</head>
+<body>
+<div id="loader"></div>
+<div data-role="page" id="page-div">
+<div data-role="content" data-theme="a"> <img src="img/logo.png" width="347" height="100" id="Ablending" title="Ablending.com">
+<div class="title">
+<h1>Save Thousands with a Low Mortgage Rate</h1>
+<h2>Compare Offers. <strong>Calculate Your Payment</strong> in 30 Seconds.</h2>
+</div>
+<div class="error-message"></div>
+<a id="form-top" name="form-top"></a>
+<form method="post" action="tm/contact_mail.php">
+<input type="hidden" name="pub_id" value="" />
+<input type="hidden" name="sub_id" value="" />
+<input type="hidden" name="source" value="" />
+<input type="hidden" name="placement" value="" />
+<input type="hidden" name="ad" value="" />
+<input type="hidden" name="ad_id" value="" />
+<input type="hidden" name="keyword" value="" />
+<input type="hidden" name="lander" value="" />
+<input id="leadid_token" name="universal_leadid" type="hidden" value="" />
+<div id="step1" class="step">
+<div class="label_container">
+<div class="label">What kind of <strong>home loan</strong> would you like?</div>
+</div>
+<div class="submit loantype">Refinance</div>
+<div class="submit loantype">Buy a Home</div>
+<input type="hidden" name="loanpurpose" id="loanpurpose" value="Refinance">
+</div>
+<div id="step2" class="step">
+<div class="label_container">
+<div class="label">What is the <strong>property type</strong>?</div>
+</div>
+<div class="submit propertytype" id="single_fam">Single Family</div>
+<div class="submit propertytype" id="multi_fam">Multi-Family</div>
+<div class="submit propertytype" id="condo">Condominium</div>
+<div class="submit propertytype" id="townhome">Townhome</div>
+<div class="submit propertytype" id="mobilehome">Mobile Home</div>
+<input type="hidden" name="PROP_DESC" id="PROP_DESC" value="single_fam">
+<a href="#" class="back">Back</a>
+</div>
+
+<div id="step3" class="step">
+<div class="label_container">
+<div class="label">When are you <strong>likely to buy</strong> a home?</div>
+</div>
+<div class="submit mortgagegoal" id="immediately">Immediately</div>
+<div class="submit mortgagegoal" id="30_days">Within 30 Days</div>
+<div class="submit mortgagegoal" id="60_days">Within 60 Days</div>
+<div class="submit mortgagegoal" id="90_days">Within 90 Days</div>
+<div class="submit mortgagegoal" id="no_time_constraint">I'm Not Sure</div>
+<input type="hidden" name="mortgagegoal" id="mortgagegoal" value="60_days">
+<a href="#" class="back">Back</a>
+</div>
+<div id="step4" class="step">
+<div class="label_container">
+<div class="label">Have you <strong>found a home</strong>?</div>
+</div>
+<div class="submit SPEC_HOME" id="Yes">Yes</div>
+<div class="submit SPEC_HOME" id="No">No</div>
+ <input type="hidden" name="SPEC_HOME" id="SPEC_HOME" value="No">
+<a href="#" class="back">Back</a>
+</div>
+<div id="step5" class="step">
+<div class="label_container">
+<div class="label">Do you have a <strong>real estate agent</strong>?</div>
+</div>
+<div class="submit AGENT_FOUND" id="Yes">Yes</div>
+<div class="submit AGENT_FOUND" id="No">No</div>
+<input type="hidden" name="AGENT_FOUND" id="AGENT_FOUND" value="No">
+<a href="#" class="back">Back</a>
+</div>
+<div id="step6" class="step">
+<div class="label_container">
+<div class="label">Would you like a top-rated real estate agent to <strong>contact you</strong>?</div>
+</div>
+<div class="submit AGENT_CONTACT" id="Yes">Yes</div>
+<div class="submit AGENT_CONTACT" id="No">No</div>
+<input type="hidden" name="AGENT_CONTACT" id="AGENT_CONTACT" value="No">
+<a href="#" class="back">Back</a>
+</div>
+<div id="step7" class="step">
+<div class="label_container">
+<div class="label">What's your estimated <strong>purchase price</strong>?</div>
+</div>
+<div class="slider">
+<span class="rounded label-slider">$<span class="purchaseprice">250,000</span></span>
+<input type="range" name="purchaseprice" id="purchaseprice" value="250000" min="10000" max="1000000" step="10000" data-highlight="true" />
+<span class="left-label">$10k</span> <span class="right-label">$1MM+</span>
+</div>
+<div class="clear"></div>
+<div class="submit"> Continue </div>
+<a href="#" class="back">Back</a>
+</div>
+<div id="step8" class="step">
+<div class="label_container">
+<div class="label">What's your estimated <strong>down payment</strong>?</div>
+</div>
+<div class="slider">
+<span class="rounded label-slider"><span class="DOWN_PMT_PERCENT">20</span>%</span>
+<input type="range" name="DOWN_PMT_PERCENT" id="DOWN_PMT_PERCENT" value="20" min="0" max="80" step="1" data-highlight="true" />
+<span class="left-label">0%</span> <span class="right-label">80+%</span>
+</div>
+<div class="clear"></div>
+<div class="submit"> Continue </div>
+<a href="#" class="back">Back</a>
+</div>
+<div id="step9" class="step">
+<div class="label_container">
+<div class="label">Have you ever served in the <strong>U.S. military</strong>?</div>
+</div>
+<div class="submit VA_STATUS_PURCH" id="Yes">Yes</div>
+<div class="submit VA_STATUS_PURCH" id="No">No</div>
+<input type="hidden" name="VA_STATUS_PURCH" id="VA_STATUS_PURCH" value="No">
+<a href="#" class="back">Back</a>
+</div>
+
+
+<div id="step10" class="step">
+<div class="label_container">
+<div class="label">How much is your <strong>home worth</strong>?</div>
+</div>
+<div class="slider">
+<span class="rounded label-slider">$<span class="propertyvalue">250,000</span></span>
+<input type="range" name="propertyvalue" id="propertyvalue" value="250000" min="10000" max="1000000" step="10000" data-highlight="true" />
+<span class="left-label">$10k</span> <span class="right-label">$1MM+</span>
+</div>
+<div class="clear"></div>
+<div class="submit"> Continue </div>
+<a href="#" class="back">Back</a>
+</div>
+<div id="step11" class="step">
+<div class="label_container">
+<div class="label">How much do you <strong>still owe</strong> on your home?</div>
+
+</div>
+<div class="slider">
+<span class="rounded label-slider">$<span class="mortgagebalance">200,000</span></span>
+ <input type="range" name="mortgagebalance" id="mortgagebalance" value="200000" min="10000" max="1000000" step="10000" data-highlight="true" />
+<span class="left-label">$10k</span> <span class="right-label">$1MM+</span>
+</div>
+<div class="clear"></div>
+<div class="submit"> Continue </div>
+<a href="#" class="back">Back</a>
+</div>
+<div id="step12" class="step">
+<div class="label_container">
+<div class="label">What's your <strong>current mortgage rate</strong>?</div>
+</div>
+<div class="slider">
+<span class="rounded label-slider"><span class="mortgagerate">4.500</span>%</span>
+<input type="range" name="mortgagerate" id="mortgagerate" value="4.500" min="2" max="8" step=".125" data-highlight="true" />
+<span class="left-label">2.000%</span> <span class="right-label">8.000%+</span>
+</div>
+<div class="clear"></div>
+<div class="submit"> Continue </div>
+<a href="#" class="back">Back</a>
+</div>
+<div id="step13" class="step">
+<div class="label_container">
+<div class="label">Do you have a <strong>2nd mortgage</strong>?</div>
+</div>
+<div class="submit MTG_TWO" id="Yes">Yes</div>
+<div class="submit MTG_TWO" id="No">No</div>
+<input type="hidden" name="MTG_TWO" id="MTG_TWO" value="No">
+<a href="#" class="back">Back</a>
+</div>
+<div id="step14" class="step">
+<div class="label_container">
+<div class="label">What's your <strong>2nd mortgage balance</strong>?</div>
+</div>
+<div class="slider">
+<span class="rounded label-slider">$<span class="mortgagebalance2">0</span></span>
+<input type="range" name="mortgagebalance2" id="mortgagebalance2" value="0" min="0" max="100000" step="1000" data-highlight="true" />
+<span class="left-label">$0</span> <span class="right-label">$100k+</span>
+</div>
+<div class="clear"></div>
+<div class="submit"> Continue </div>
+<a href="#" class="back">Back</a>
+</div>
+<div id="step15" class="step">
+<div class="label_container">
+<div class="label">How much <strong>additional cash</strong> do you wish to borrow?</div>
+</div>
+<div class="slider">
+<span class="rounded label-slider">$<span class="addcash">0</span></span>
+<input type="range" name="addcash" id="addcash" value="0" min="0" max="50000" step="1000" data-highlight="true" />
+<span class="left-label">$0</span> <span class="right-label">$50k+</span>
+</div>
+<div class="clear"></div>
+<div class="submit"> Continue </div>
+<a href="#" class="back">Back</a>
+</div>
+<div id="step16" class="step">
+<div class="label_container">
+<div class="label">Have you ever served in the <strong>U.S. military</strong>?</div>
+</div>
+<div class="submit VA_STATUS_REFI" id="Yes">Yes</div>
+<div class="submit VA_STATUS_REFI" id="No">No</div>
+<input type="hidden" name="VA_STATUS_REFI" id="VA_STATUS_REFI" value="No">
+<a href="#" class="back">Back</a>
+</div>
+<div id="step17" class="step">
+<div class="label_container">
+<div class="label">Do you currently have a <strong>VA loan</strong>?</div>
+</div>
+<div class="submit VA_LOAN" id="Yes">Yes</div>
+<div class="submit VA_LOAN" id="No">No</div>
+<input type="hidden" name="VA_LOAN" id="VA_LOAN" value="No">
+<a href="#" class="back">Back</a>
+</div>
+<div id="step18" class="step">
+<div class="label_container">
+<div class="label">Do you currently have an <strong>FHA loan</strong>?</div>
+</div>
+<div class="submit FHA_LOAN" id="Yes">Yes</div>
+<div class="submit FHA_LOAN" id="No">No</div>
+<div class="submit FHA_LOAN" id="No">I'm Not Sure</div>
+<input type="hidden" name="FHA_LOAN" id="FHA_LOAN" value="No">
+<a href="#" class="back">Back</a>
+</div>
+
+<div id="step19" class="step">
+<div class="label_container">
+<div class="label">Any <strong>bankruptcy</strong> or <strong>foreclosure</strong> in the past 3 years?</div>
+</div>
+<div class="submit FHA_BANK_FORECLOSURE" id="Yes">Yes</div>
+<div class="submit FHA_BANK_FORECLOSURE" id="No">No</div>
+<input type="hidden" name="FHA_BANK_FORECLOSURE" id="FHA_BANK_FORECLOSURE" value="No">
+<a href="#" class="back">Back</a>
+</div>
+<div id="step20" class="step">
+<div class="label_container">
+<div class="label">What's your estimated <strong>credit rating</strong>?</div>
+</div>
+<div class="submit credit" id="excellent">Excellent</div>
+
+<div class="submit credit" id="good">Good</div>
+<div class="submit credit" id="fair">Fair</div>
+<div class="submit credit" id="poor">Poor</div>
+<input type="hidden" name="credgrade" id="credgrade" value="GOOD" />
+<a href="#" class="back">Back</a>
+</div>
+<div id="step21" class="step">
+<div class="label_container">
+<div class="label">What's your <strong>street address</strong>?</div>
+<div class="label_small">Start typing. We'll help you complete it.</div>
+</div>
+<input id="geocomplete" name="geocomplete" type="text" class="required" minlength="3" placeholder="Street Address" />
+<div class="submit"> Continue </div>
+<a href="#" class="back">Back</a>
+</div>
+<div id="step22" class="step">
+<div class="label_container">
+<div class="label">Please complete your <strong>address</strong>.</div>
+</div>
+<input id="address" name="address" type="text" class="streetUS required" minlength="3" placeholder="Street" />
+<input type='text' name='city' id='city' class="required" placeholder="City">
+<select name="state" id="state" data-native-menu="false" placeholder="State">
+<option value="AL">AL (Alabama)</option><option value="AK">AK (Alaska)</option><option value="AZ">AZ (Arizona)</option><option value="AR">AR (Arkansas)</option><option value="CA">CA (California)</option><option value="CO">CO (Colorado)</option><option value="CT">CT (Connecticut)</option><option value="DE">DE (Delaware)</option><option value="DC">DC (Washington DC)</option><option value="FL">FL (Florida)</option><option value="GA">GA (Georgia)</option><option value="HI">HI (Hawaii)</option><option value="ID">ID (Idaho)</option><option value="IL">IL (Illinois)</option><option value="IN">IN (Indiana)</option><option value="IA">IA (Iowa)</option><option value="KS">KS (Kansas)</option><option value="KY">KY (Kentucky)</option><option value="LA">LA (Louisiana)</option><option value="ME">ME (Maine)</option><option value="MD">MD (Maryland)</option><option value="MA">MA (Massachusetts)</option><option value="MI">MI (Michigan)</option><option value="MN">MN (Minnesota)</option><option value="MS">MS (Mississippi)</option><option value="MO">MO (Missouri)</option><option value="MT">MT (Montana)</option><option value="NE">NE (Nebraska)</option><option value="NV">NV (Nevada)</option><option value="NH">NH (New Hampshire)</option><option value="NJ">NJ (New Jersey)</option><option value="NM">NM (New Mexico)</option><option value="NY">NY (New York)</option><option value="NC">NC (North Carolina)</option><option value="ND">ND (North Dakota)</option><option value="OH">OH (Ohio)</option><option value="OK">OK (Oklahoma)</option><option value="OR">OR (Oregon)</option><option value="PA">PA (Pennsylvania)</option><option value="RI">RI (Rhode Island)</option><option value="SC">SC (South Carolina)</option><option value="SD">SD (South Dakota)</option><option value="TN">TN (Tennessee)</option><option value="TX">TX (Texas)</option><option value="UT">UT (Utah)</option><option value="VT">VT (Vermont)</option><option value="VA">VA (Virginia)</option><option value="WA">WA (Washington)</option><option value="WV">WV (West Virginia)</option><option value="WI">WI (Wisconsin)</option><option value="WY">WY (Wyoming)</option> </select>
+<input type='tel' name='zipcode' id='zipcode' class="required digits" minlength="5" maxlength="5" placeholder="Zip">
+<div class="submit"> Continue </div>
+<a href="#" class="back">Back</a>
+</div>
+<div id="step23" class="step">
+<div class="label_container">
+<div class="label">Almost done. What's <strong>your name</strong>?</div>
+<div class="label_small">We need to know you're not a robot.</div>
+</div>
+<input type='text' name='firstname' id='firstname' class="required firstNameVal" minlength="2" placeholder="First Name">
+<input type='text' name='lastname' id='lastname' class="required lastNameVal" minlength="3" placeholder="Last Name">
+<div class="submit"> Continue </div>
+<a href="#" class="back">Back</a>
+</div>
+<div id="step24" class="step">
+<div class="label_container">
+<div class="label">Final step. What are your <strong>basic contact details</strong>?</div>
+<div class="label_small">Complete to receive a FREE Mortgage Information Kit.</div>
+</div>
+<input type="email" name="email" id="email" class="required emailVal email" placeholder="Email">
+<input type="tel" name="phone" id="phone" class="required phoneUS last-input" placeholder="Phone (will be your password)">
+
+<input type="submit" value="GET QUOTES NOW" data-theme="a" id="final-submit">
+
+<img src="img/bbb-horizontal.png" />
+<div class="clear"></div>
+
+<label id="tcpa_disclosure"><input type="hidden" id="leadid_tcpa_disclosure" />We take your privacy seriously. By clicking the button, you agree to share your information with us and up to <a href='https://Ablending.com.com/participating-lenders/' target='_blank'>5 participating lenders</a>, including potentially Quicken Loans, and for them to contact you (including through automated means; e.g. autodialing, text and pre-recorded messaging) via telephone, mobile device (including SMS and MMS) and/or email, even if your telephone number is currently listed on any state, federal or corporate Do Not Call list. Consent is not required as a condition to purchase a good/service.</label>
+<input type="hidden" name="TCPA" value="We take your privacy seriously. By clicking the button, you agree to share your information with us and up to <a href='https://Ablending.com.com/participating-lenders/' target='_blank'>5 participating lenders</a>, including potentially Quicken Loans, and for them to contact you (including through automated means; e.g. autodialing, text and pre-recorded messaging) via telephone, mobile device (including SMS and MMS) and/or email, even if your telephone number is currently listed on any state, federal or corporate Do Not Call list. Consent is not required as a condition to purchase a good/service." />
+</div>
+<div class="security"> <img src="img/bbb-icon.gif"> <span>BBB</span> Accredited Business |<img src="img/lock-icon.gif"> Privacy <strong>Protected</strong> </div>
+</form>
+
+<div id="ouibounce-modal">
+<div class="underlay"></div>
+<div class="modal">
+<div class="modal-title">
+<h3>Before You Go...</h3>
+</div>
+<div class="modal-body">
+<h2>The Fed will be raising rates this year.</h2>
+<p><strong>Does this mean mortgage rates will go up? <em>You betcha.</em></strong><br />In fact we've already seen mortgage rates start to climb slightly.</p>
+<p><strong>DON'T WAIT. GET STARTED NOW.</strong><br />Want to see all the lenders' and their rates?<br />Want to pick a select few lenders to work with?</p>
+
+<div id="cta1">
+<p>I WANT TO...</p>
+<a href="https://Ablending.com.com/mortgage-rates/">SEE THE LOWEST RATES</a>
+<p class="subhead">Choose this if you want to see all the lenders and their lowest rates.</p>
+</div>
+<div id="cta2">
+<p>I WANT TO...</p>
+<a href="https://Ablending.com.com/mortgage-rates/">PICK MY OWN LENDERS</a>
+<p class="subhead">Choose this if you want to work with only the highest-rated lenders.</p>
+</div>
+<br style="clear:both;" />
+</div>
+<div class="modal-footer">
+<p>Continue</p>
+</div>
+</div>
+</div>
+
+<div class="tollfree">Talk with a real person <a href="tel:8552140503 " class="tollfreephone">(855) 214-0503 </a></div>
+
+<p class="disclaimer-text"> Click here to view our <a href="https://Ablending.com.com/privacy-policy/" title="Privacy Policy" data-ajax="false" target="_blank">Privacy Statement</a> and <a href="https://Ablending.com.com/disclosures-terms-conditions/" title="Terms & Conditions" data-ajax="false" target="_blank">Terms</a> </p>
+<p class="lenders"> Lenders: <a href="https://Ablending.com.com/get-internet-mortgage-leads/?utm_source=LANDER&amp;utm_medium=M&amp;utm_content=CONTACT" title="Get Internet Mortgage Leads" data-ajax="false">Contact Us</a></p>
+</div>
+
+
+<script src="http://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyC5SMZM-jNQVc9IWqwWPeeRJKiKYTiPsGo"></script>
+<script src="vendor/jquery/jquery-1.11.1.min.js"></script>
+<script src="vendor/jquery-mobile/jquery.mobile-1.4.5.min.js"></script>
+<script src="vendor/jquery-validate/jquery.validate-1.11.1.min.js"></script>
+<script src="vendor/jquery-maskedinput/jquery.maskedinput.js"></script>
+<script src="vendor/geocomplete/jquery.geocomplete.min.js"></script>
+<script src="vendor/ouibounce/ouibounce.js"></script>
+<script src="js/functions.js"></script>
+<script id="LeadiDscript" type="text/javascript">
+  (
+    function() { 
+      var s = document.createElement('script'); 
+      s.id = 'LeadiDscript_campaign'; 
+      s.type = 'text/javascript'; 
+      s.async = true; 
+      s.src = (document.location.protocol + '//d1tprjo2w7krrh.cloudfront.net/campaign/36210b05-1ee3-8224-8678-e88d15c91789.js'); 
+      var LeadiDscript = document.getElementById('LeadiDscript'); 
+      LeadiDscript.parentNode.insertBefore(s, LeadiDscript);
+    }
+  )();
+</script>
+
+
+
+
+
+<script type="application/javascript">
+		(function(w,d,t,r,u){w[u]=w[u]||[];
+		w[u].push({'projectId':'10000','properties':{'pixelId':'10048403'}});
+		var s=d.createElement(t);
+		s.src=r;
+		s.async=true;
+		s.onload=s.onreadystatechange=function(){
+			var y,rs=this.readyState,c=w[u];
+			if(rs&&rs!="complete"&&rs!="loaded"){return}
+			try{
+				y=YAHOO.ywa.I13N.fireBeacon;
+				w[u]=[];
+				w[u].push=function(p){y([p])};
+				y(c)}catch(e){}};
+				var scr=d.getElementsByTagName(t)[0],par=scr.parentNode;
+				par.insertBefore(s,scr)
+			}
+		)
+		(window,document,"script","js/ytc.js","dotq");
+  </script>
+
+</body>
+
+</html>

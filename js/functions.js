@@ -1,0 +1,58 @@
+$(document).ready(function(){var _ouibounce=ouibounce(document.getElementById('ouibounce-modal'),{aggressive:true,sensitivity:40,timer:1000,cookieExpire:1});$('body').on('click',function(){$('#ouibounce-modal').hide();});$('#ouibounce-modal .modal-footer').on('click',function(){$('#ouibounce-modal').hide();});$('#ouibounce-modal .modal').on('click',function(e){e.stopPropagation();});function loantypeSwitch(){if($("#loanpurpose").val().indexOf("Purchase")>=0){$(".purchase").show();$(".refinance").hide();}else{$(".refinance").show();$(".purchase").hide();}}
+function numberWithCommas(x){return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",");}
+var filterAddress=/^\s*\S+(?:\s+\S+){2}/;$.validator.addMethod("streetUS",function(address,element){return this.optional(element)||address.length>3&&address.match(filterAddress);},"Please enter a street number, street name and street type (Road, Street, Lane, etc...)");$.validator.addMethod("firstNameVal",function(first_name,element){return this.optional(element)||(first_name.toLowerCase()!="no")&&(first_name.toLowerCase()!="nunya")&&(first_name.toLowerCase()!="asdf")&&(!first_name.match(/(.)\1{2,}/));},"Please enter your actual first name");$.validator.addMethod("lastNameVal",function(last_name,element){return this.optional(element)||(last_name.toLowerCase()!="no")&&(last_name.toLowerCase()!="asdf")&&(last_name.toLowerCase()!="nunya")&&(last_name.toLowerCase()!="business")&&(last_name.toLowerCase()!="name")&&(!last_name.match(/(.)\1{2,}/));},"Please enter your actual last name");$.validator.addMethod("emailVal",function(email,element){return this.optional(element)||(email.toLowerCase().indexOf("spam")==-1)&&(email.toLowerCase().indexOf("nunya")==-1);},"Please enter your real email address");$.validator.addMethod("phoneUS",function(phone_number,element){phone_number=phone_number.replace(/\s+/g,"");var phoneLast4=phone_number.substr(phone_number.length-4);return this.optional(element)||phone_number.length>9&&(phoneLast4!="1212")&&(phoneLast4!="1234")&&(!phoneLast4.match(/([0-9])\1{3,}/))&&(phone_number.match(/^(1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/));},"Please enter a valid phone number");$('#final-submit').unbind("submit");$("#QuoteForm").validate({onkeyup:false,focusCleanup:true,onfocusout:false,errorLabelContainer:".error-message",rules:{address:{required:true,streetUS:true},firstname:{required:true,firstNameVal:true},lastname:{required:true,lastNameVal:true},email:{required:true,emailVal:true},phone:{required:true,phoneUS:true},},messages:{zipcode:{required:"Please enter a valid zip code.",digits:"Zip code must be 5 digits.",},firstname:"Please enter your complete first name.",lastname:"Please enter your complete last name.",address:{streetUS:"Please enter a street number, street name and street type (Road, Street, Lane, etc...).",required:"Please enter your street address."},city:"Please enter your city.",email:{email:"Please enter a valid email.",required:"Please enter a valid email."},phone:{phoneUS:"Please enter a valid phone number.",required:"Please enter a valid phone number."},state:"Please enter a state."}});$('#loader').hide();$('#ouibounce-modal').hide();$("#geocomplete").geocomplete({details:"form",types:["geocode","establishment"],});$("#find").click(function(){$("#geocomplete").trigger("geocode");});$("#geocomplete").bind("geocode:result",function(event,result){var componentForm={street_number:'short_name',route:'long_name',locality:'long_name',administrative_area_level_1:'short_name',postal_code:'short_name'};var street_number_val='';var street_name_val='';var city_val='';var state_val='';var zipcode_val='';for(var i=0;i<result.address_components.length;i++){var addressType=result.address_components[i].types[0];var val=result.address_components[i][componentForm[addressType]];if(addressType=="street_number"){street_number_val=val;}
+else if(addressType=="route"){street_name_val=val;}
+else if(addressType=="locality"){city_val=val;}
+else if(addressType=="administrative_area_level_1"){state_val=val;}
+else if(addressType=="postal_code"){zipcode_val=val;}}
+if(street_number_val&&street_name_val){$("#address").val(street_number_val+" "+street_name_val);}
+$("#city").val(city_val);var el=$('#state');el.val(state_val).attr('selected',true).siblings('option').removeAttr('selected');el.selectmenu("refresh",true);$("#zipcode").val(zipcode_val);});var ua=navigator.userAgent.toLowerCase();var isAndroid=ua.indexOf("android")>-1;if(!isAndroid){$("#phone").mask("(999) 999-9999")}
+$(".loantype").click(function(){var text=$(this).text();$("#loanpurpose").val(text);$(".loantype").css("opacity","1")
+$(this).css("opacity","0.5")});$(".propertytype").click(function(){$("#PROP_DESC").val($(this).attr('id'));$(".propertytype").css("opacity","1")
+$(this).css("opacity","0.5")});$(".mortgagegoal").click(function(){$("#mortgagegoal").val($(this).attr('id'));$(".mortgagegoal").css("opacity","1")
+$(this).css("opacity","0.5")});$(".SPEC_HOME").click(function(){$("#SPEC_HOME").val($(this).attr('id'));$(".SPEC_HOME").css("opacity","1")
+$(this).css("opacity","0.5")});$(".AGENT_FOUND").click(function(){$("#AGENT_FOUND").val($(this).attr('id'));$(".AGENT_FOUND").css("opacity","1")
+$(this).css("opacity","0.5")});$(".AGENT_CONTACT").click(function(){$("#AGENT_CONTACT").val($(this).attr('id'));$(".AGENT_CONTACT").css("opacity","1")
+$(this).css("opacity","0.5")});$("#purchaseprice").bind("change",function(){var value=parseInt($(this).val());if(value=='1000000')
+value=numberWithCommas(value)+"+";else{var lower=value;value=numberWithCommas(lower);}
+$("span."+$(this).attr('id')).text(value);});$("#DOWN_PMT_PERCENT").bind("change",function(){var value=parseFloat($(this).val()).toFixed(0);if(value==80)
+value+="+";$("span.DOWN_PMT_PERCENT").text(value);});$(".VA_STATUS_PURCH").click(function(){$("#VA_STATUS_PURCH").val($(this).attr('id'));$(".VA_STATUS_PURCH").css("opacity","1")
+$(this).css("opacity","0.5")});$("#propertyvalue, #mortgagebalance").bind("change",function(){var value=parseInt($(this).val());if(value=='1000000'){value=numberWithCommas(value)+"+";}
+else{var lower=value;value=numberWithCommas(lower);}
+$("span."+$(this).attr('id')).text(value);});$("#mortgagerate").bind("change",function(){var value=parseFloat($(this).val()).toFixed(3);if(value==8.000){value+="+";}
+$("span.mortgagerate").text(value);});$(".MTG_TWO").click(function(){$("#MTG_TWO").val($(this).attr('id'));$(".MTG_TWO").css("opacity","1")
+$(this).css("opacity","0.5")});$("#mortgagebalance2").bind("change",function(){var value=parseInt($(this).val());if(value=='100000'){value=numberWithCommas(value)+"+";}
+else{value=numberWithCommas(value);}
+$("span."+$(this).attr('id')).text(value);});$("#addcash").bind("change",function(){var value=parseInt($(this).val());if(value=='50000'){value=numberWithCommas(value)+"+";}
+else{value=numberWithCommas(value);}
+$("span."+$(this).attr('id')).text(value);});$(".VA_STATUS_REFI").click(function(){$("#VA_STATUS_REFI").val($(this).attr('id'));$(".VA_STATUS_REFI").css("opacity","1")
+$(this).css("opacity","0.5")});$(".VA_LOAN").click(function(){$("#VA_LOAN").val($(this).attr('id'));$(".VA_LOAN").css("opacity","1")
+$(this).css("opacity","0.5")});$(".FHA_LOAN").click(function(){$("#FHA_LOAN").val($(this).attr('id'));$(".FHA_LOAN").css("opacity","1")
+$(this).css("opacity","0.5")});$(".FHA_BANK_FORECLOSURE").click(function(){$("#FHA_BANK_FORECLOSURE").val($(this).attr('id'));$(".FHA_BANK_FORECLOSURE").css("opacity","1")
+$(this).css("opacity","0.5")});$(".credit").click(function(){if($(this).attr('id')=="vgood")
+$("#credgrade").val("GOOD");else
+$("#credgrade").val($(this).attr('id').toUpperCase());$(".credit").css("opacity","1")
+$(this).css("opacity","0.5")
+if(typeof(checkCredit)=='function'&&checkCredit())return false;var currentstep=$(".step:visible");currentstep.fadeOut('fast',function(){currentstep.next(".step").fadeIn('slow');loantypeSwitch();});});$("#geocomplete").bind("change",function(){var street=$("input[name=geocomplete]").val();$("input[name=address]").val(street);});$("#firstname").keyup(function(){$(".error-message .error").remove();});$("#lastname").keyup(function(){$(".error-message .error").remove();});$("#email").keyup(function(){$(".error-message .error").remove();});$("#phone").keyup(function(){$(".error-message .error").remove();});$(".submit").click(function(){$(".error-message .error").remove();var id=$(".step:visible").attr('id');var next=$(".step:visible").next(".step").attr('id');if(id=='step2'&&$("#loanpurpose").val().indexOf("Refinance")>=0){next='step10';}
+if(id=='step9'&&$("#loanpurpose").val().indexOf("Buy a Home")>=0){next='step19';}
+if(id=='step5'){if($("#AGENT_FOUND").val()=="No"){next='step6';}
+else{next='step7';}}
+if(id=='step13'){if($("#MTG_TWO").val()=="Yes"){next='step14';}
+else{next='step15';}}
+if(id=='step16'){if($("#VA_STATUS_REFI").val()=="Yes"){next='step17';}
+else{next='step18';}}
+if(id=='step17'){if($("#VA_LOAN").val()=="Yes"){next='step19';}
+else{next='step18';}}
+if($("#"+id+" input").length&&!$("#"+id+" input").valid()){$('html,body').animate({scrollTop:$(".error-message").offset().top},'slow');return false;}
+if((id=='step21')&&$("#address").val()&&$("#city").val()&&$("#zipcode").val()){var streetadd=$("#address").val();if(filterAddress.test(streetadd)){next='step23';}}
+$('#'+id).fadeOut('fast',function(){$('#'+next).fadeIn('slow');loantypeSwitch();});});var count=0;$("#final-submit").click(function(){var id=$(".step:visible").attr('id');if($("#"+id+" input").length&&!$("#"+id+" input").valid()){$('html,body').animate({scrollTop:$(".error-message").offset().top},'slow');return false;}
+$(".error-message .error").remove();if($("#QuoteForm").valid()){$('[type="submit"]').button('disable');$('[type="submit"]').button('refresh');var credGrade;credGrade=$("#credgrade").val();if((credGrade=='FAIR')||(credGrade=='POOR')){var popupURL;popupURL='https://www.lexingtonlaw.com/l/new-home?tid=1030.0.5747_100'
+var first_name=encodeURIComponent($('#firstname').val());popupURL+='&first_name='+first_name;var last_name=encodeURIComponent($('#lastname').val());popupURL+='&last_name='+last_name;var email=encodeURIComponent($('#email').val());popupURL+='&email='+email;var phone=encodeURIComponent($('#phone').val());popupURL+='&phone='+phone;var phone2=encodeURIComponent($('#phone').val());popupURL+='&phone2='+phone2;var address=encodeURIComponent($('#address').val());popupURL+='&address='+address;var zip=encodeURIComponent($('#zipcode').val());popupURL+='&zip='+zip;window.open(popupURL);}
+$('#QuoteForm').submit();}});$(".back").click(function(){$(".error-message .error").remove();var id=$(".step:visible").attr('id');var prev=$(".step:visible").prev(".step").attr('id');if(id=="step7"&&($("#AGENT_FOUND").val()=="Yes")){prev="step5";}
+else if(id=="step10"&&$("#loanpurpose").val().indexOf("Refinance")>=0){prev="step2";}
+else if(id=="step15"&&($("#MTG_TWO").val()=="No")){prev="step13";}
+else if(id=="step18"&&($("#VA_STATUS_REFI").val()=="No")){prev="step16";}
+else if(id=="step19"&&$("#loanpurpose").val().indexOf("Buy a Home")>=0){prev="step9";}
+else if(id=="step19"&&($("#VA_LOAN").val()=="Yes")){prev="step17";}
+$('#'+id).fadeOut('fast',function(){$('#'+prev).fadeIn('slow');loantypeSwitch();});});$("input").keydown(function(event){if(event.keyCode==13){if($(this).hasClass('last-input')){$(".step:visible").find('.submit').click();}
+else{event.preventDefault();return false;}}});});

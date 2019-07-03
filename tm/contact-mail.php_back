@@ -1,0 +1,94 @@
+<?php
+
+//if "email" variable is filled out, send email
+
+  if (isset($_REQUEST['email']))  {
+
+//echo "<pre>";
+    //print_r($_REQUEST);
+
+    $mail_message='';
+    foreach ($_REQUEST as $key => $value) {
+
+      $mail_message.=$key."=".$value."\n";
+      # code...
+    }
+//die;
+  
+
+  //Email information
+
+  $admin_email = "jack@bizngine.com, alex@bizngine.com, barfavijay11@gmail.com";
+  
+  $email = $_REQUEST['email'];
+
+  $subject = $_REQUEST['subject'];
+
+  $subject = "mail testing";
+
+  $comment = $_REQUEST['comment'];
+
+  $email_body = "You have received a new message. ".
+        " Here are the details:\n Email: $email \n ".
+        "subject: $subject\n Message :- $mail_message\n";
+
+        $headers = "From: $email\n";
+        $headers .= "Reply-To: $admin_email";
+
+        mail($admin_email,$subject,$email_body,$headers);
+  //die;
+  //send email
+
+  //mail($admin_email, $subject, $comment, "From:" . $email);
+
+
+
+  
+
+  //Email response
+
+  echo "Thank you for contacting us!";
+
+  }
+
+  
+
+  //if "email" variable is not filled out, display the form
+
+  else  {
+
+?>
+
+
+
+ <form method="post">
+
+
+
+  Email: <input name="email" type="text" />
+
+
+
+  Subject: <input name="subject" type="text" />
+
+
+
+  Message:
+
+
+
+  <textarea name="comment" rows="15" cols="40"></textarea>
+
+
+
+  <input type="submit" value="Submit" />
+
+  </form>
+
+  
+
+<?php
+
+  }
+
+?>
